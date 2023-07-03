@@ -24,6 +24,7 @@ public class PlayerJoinListener {
 
             boolean isPlayerWhitelisted = jedis.sismember("whitelist.main", event.getPlayer().getUniqueId().toString());
             if (!isPlayerWhitelisted) {
+                plugin.getLogger().info("Player " + event.getPlayer().getUsername() + " with UUID " + event.getPlayer().getUniqueId().toString() + " is not whitelisted.");
                 event.setResult(
                     ResultedEvent.ComponentResult.denied(
                         Component.text(
@@ -34,6 +35,7 @@ public class PlayerJoinListener {
                     )
                 );
             } else {
+                plugin.getLogger().info("Player " + event.getPlayer().getUsername() + " with UUID " + event.getPlayer().getUniqueId().toString() + " is whitelisted.");
                 event.setResult(ResultedEvent.ComponentResult.allowed());
             }
         } catch (Exception e) {
