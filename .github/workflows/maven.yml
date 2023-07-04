@@ -33,7 +33,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: plugin-jar
-        path: trget/uber-velocity-redis-whitelist-1.0-SNAPSHOT.jar
+        path: target/uber-velocity-redis-whitelist-1.0-SNAPSHOT.jar
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     #- name: Update dependency graph
