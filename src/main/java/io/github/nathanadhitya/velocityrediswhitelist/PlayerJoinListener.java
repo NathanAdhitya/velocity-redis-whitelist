@@ -17,10 +17,11 @@ public class PlayerJoinListener {
 
     @Subscribe
     public void onPlayerJoin(LoginEvent event) {
+        Jedis jedis = null;
         try {
             // Get Jedis Pool
             JedisPool jedisPool = plugin.getJedisPool();
-            Jedis jedis = jedisPool.getResource();
+            jedis = jedisPool.getResource();
 
             boolean isPlayerWhitelisted = jedis.sismember("whitelist.main", event.getPlayer().getUniqueId().toString());
             if (!isPlayerWhitelisted) {
@@ -48,6 +49,14 @@ public class PlayerJoinListener {
             );
 
             plugin.getLogger().error("An error occurred while checking if player is whitelisted: ", e);
+        }
+
+        // Attempt to close the Jedis connection
+        try {
+            if(jedis != null)
+                jedis.close();
+        } catch (Exception e) {
+            plugin.getLogger().error("An error occurred while closing Jedis connection: ", e);
         }
     }
 }

@@ -44,6 +44,10 @@ public class VelocityRedisWhitelist {
         this.dataDirectory = dataDirectory;
 
         jedisPoolConfig = new JedisPoolConfig();
+        jedisPoolConfig.setMaxTotal(64);
+        jedisPoolConfig.setMaxIdle(64);
+        jedisPoolConfig.setMinIdle(2);
+        jedisPoolConfig.setTestWhileIdle(true);
     }
 
     @Subscribe
