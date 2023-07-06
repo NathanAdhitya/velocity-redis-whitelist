@@ -28,6 +28,14 @@ jobs:
         
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+
+    - name: Bump Version
+      id: bump
+      uses: nnichols/maven-version-bump-action@v3
+      with:
+        github-token: ${{ secrets.github_token }}
+          - name: Print Version
+            run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
       
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3

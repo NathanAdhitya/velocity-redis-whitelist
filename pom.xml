@@ -6,7 +6,7 @@
 
     <groupId>io.github.nathanadhitya.velocityrediswhitelist</groupId>
     <artifactId>velocity-redis-whitelist</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
